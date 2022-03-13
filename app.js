@@ -13,7 +13,10 @@ const bodyParser = require('body-parser')
 // Create an express application
 const app = new express()
 
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// Access static files
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/admin',adminRoutes)
 
