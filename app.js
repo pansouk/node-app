@@ -9,11 +9,16 @@ const shopRoutes = require('./routes/shop')
 
 const bodyParser = require('body-parser')
 
+const expressHbs = require('express-handlebars')
 
 // Create an express application
-const app = new express()
+const app = express()
 
-app.set('view engine', 'pug')
+// Handlebars template engines
+app.engine('hbs', expressHbs({layoutsDir: 'views/layouts', default: 'main-layout'}))
+
+// Pug template engine
+app.set('view engine', 'hbs') // possible values 'pug', 'hbs'
 app.set('views', 'views')
 
 app.use(bodyParser.urlencoded({ extended: false }))
